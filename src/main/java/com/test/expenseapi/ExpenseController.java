@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ExceptionHandler;
+import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 
 @RestController
@@ -43,6 +44,24 @@ public class ExpenseController {
     @PostMapping("expense")
     public ResponseEntity<Expense> post(@RequestBody Expense expense) {
         return new ResponseEntity<>(repo.save(expense), HttpStatus.CREATED);
+    }
+    
+    @PatchMapping("expense/{id}")
+    public ResponseEntity<Expense> patch (@PathVariable Long id, @RequestBody Expense patch) {
+        Expense expense = repo.findById(id).get();
+        if (patch.getId() != null) {
+            expense.setId(patch.getId());
+        }
+        if (patch.getAmount() != null) {
+            expense.setAmount(patch.getAmount());
+        }
+        if (patch.getReason() != null) {
+            expense.setReason(patch.getReason());
+        }
+        if (patch.getDateCreated() != null) {
+            expense.setDateCreated(patch.getDateCreated());
+        }
+        return new ResponseEntity<>(repo.save(expense), HttpStatus.OK);
     }
     
     @DeleteMapping("expense/{id}")

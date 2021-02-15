@@ -25,3 +25,5 @@ mvn test
 mvn package
 ```
 
+### Customize the configuration
+See [Project API Documentation](http://localhost:8080/swagger-ui.html).
