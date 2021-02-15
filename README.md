@@ -5,6 +5,8 @@ The project is created using Java(Spring Boot) and can run on tomcat server. To 
 * JDK 11
 * Apache Maven
 
+Access project api documentation at http://localhost:8080/swagger-ui.html
+
 ### Install Project Dependencies
 ```bash
 mvn dependency:tree
@@ -24,6 +26,3 @@ mvn test
 ```bash
 mvn package
 ```
-
-### Customize the configuration
-See [Project API Documentation](http://localhost:8080/swagger-ui.html).
